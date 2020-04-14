@@ -1,10 +1,10 @@
 def longest_string(string_a, string_b)
   if string_a.length > string_b.length 
-    puts ("#{string_a}")
+    puts string_a
   elsif string_b.length > string_a.length 
-    puts ("#{string_b}")
+    puts string_b
   else
-    puts ("#{string_a}")
+    puts ("Both strings are equaly long")
   end
 end
 
