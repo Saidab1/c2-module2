@@ -5,7 +5,7 @@ puts ("Interest rate(%):")
 interest_rate = gets.chomp.to_f
 
 puts ("Number of periods:")
-number_periods = gets.chomp.to_f
+number_periods = gets.chomp.to_i
 
 i = 0
 
