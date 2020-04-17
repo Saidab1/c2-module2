@@ -1,26 +1,36 @@
 
+class Contacts 
+  def initialize
+    @contacts_directory = { bonnie: 212456789, mery: 555426789, louis: 456789105 }
+  end
+   
+  def exist (name)
+     @contacts_directory[name].nil? 
+    
+  end
 
+  def add (name, number)
+    @contacts_directory[name] = number
+   
+  end 
 
+  def update (name, number)
+    @contacts_directory[name] = number
+    
+  end
 
+  def deleted (name)
+    @contacts_directory.delete(name)
+    
+  end
 
+  def display
+    p @contacts_directory
+  end
+end
 
+contacts = Contacts.new
 
-
-
-
-
-
-
-
-
-
-
-contacts = {
-    bonnie: 212456789,
-    mery: 555426789,
-    louis: 456789102
-  }
-  
   puts "What do yo want to do?"
   puts "Type 'add' to add a contact"
   puts "Type 'update' to update a contact"
@@ -34,10 +44,10 @@ contacts = {
       puts "What is the contact name?"
       name = gets.chomp.downcase.to_sym
   
-      if (contacts[name]).nil?
+      if contacts.exist(name)
         puts "What is the contact phone number?"
         number = gets.chomp.to_i
-        contacts[name] = number
+        contacts.add(name, number)
         puts "You added a new contact: #{name} - #{number}"
       else
         puts "That contact exist"
@@ -47,27 +57,26 @@ contacts = {
       puts "What is the contact name?"
       name = gets.chomp.downcase.to_sym
   
-      if (contacts[name]).nil?
+      if contacts.exist(name)
         puts "That contact doesn't exist!. Add him/her"
       else
         puts "What is the contact new phone number?"
         number = gets.chomp.to_i
-        contacts[name] = number
+        contacts.update(name, number)
         puts "You updated a phone number for #{name}: #{number}"
       end
   
     when "display"
-      contacts.each { |name,phone_number| puts "#{name}:#{phone_number}"}
+      contacts.display
   
-    
     when "delete"
       puts "What is the contact name?"
       name = gets.chomp.downcase.to_sym
   
-      if (contacts[name]).nil? 
+      if contacts.exist(name)
         puts "That contact doesn't exist! Try other"
       else 
-        contacts.delete(name)
+        contacts.deleted(name)
         puts "You have deleted #{name} from your contacts"
       end
   
